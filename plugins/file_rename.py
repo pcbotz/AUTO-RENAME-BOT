@@ -131,7 +131,7 @@ def extract_episode_number(filename):
     return None
 
 # Example Usage:
-filename = "Naruto Shippuden S01 - EP07 - 1080p [Dual Audio] @Madflix_Bots.mkv"
+filename = "Naruto Shippuden S01 - EP07 - 1080p [Dual Audio] @pcott.mkv"
 episode_number = extract_episode_number(filename)
 print(f"Extracted Episode Number: {episode_number}")
 
@@ -150,15 +150,15 @@ async def auto_rename_files(client, message):
     if message.document:
         file_id = message.document.file_id
         file_name = message.document.file_name
-        media_type = media_preference or "document"  # Use preferred media type or default to document
+        media_type = media_preference or "📂 𝐃𝐨𝐜𝐮𝐦𝐞𝐧𝐭 📂"  # Use preferred media type or default to document
     elif message.video:
         file_id = message.video.file_id
         file_name = f"{message.video.file_name}.mp4"
-        media_type = media_preference or "video"  # Use preferred media type or default to video
+        media_type = media_preference or "🎥 𝐕𝐢𝐝𝐞𝐨 🎥"  # Use preferred media type or default to video
     elif message.audio:
         file_id = message.audio.file_id
         file_name = f"{message.audio.file_name}.mp3"
-        media_type = media_preference or "audio"  # Use preferred media type or default to audio
+        media_type = media_preference or "🔊 𝐀𝐮𝐝𝐢𝐨 🔊"  # Use preferred media type or default to audio
     else:
         return await message.reply_text("Unsupported File Type")
 
@@ -170,7 +170,7 @@ async def auto_rename_files(client, message):
     if file_id in renaming_operations:
         elapsed_time = (datetime.now() - renaming_operations[file_id]).seconds
         if elapsed_time < 10:
-            print("File is being ignored as it is currently being renamed or was renamed recently.")
+            print("𝐅𝐢𝐥𝐞 𝐢𝐬 𝐛𝐞𝐢𝐧𝐠 𝐢𝐠𝐧𝐨𝐫𝐞𝐝 𝐚𝐬 𝐢𝐭 𝐢𝐬 𝐜𝐮𝐫𝐫𝐞𝐧𝐭𝐥𝐲 𝐛𝐞𝐢𝐧𝐠 𝐫𝐞𝐧𝐚𝐦𝐞𝐝 𝐨𝐫 𝐰𝐚𝐬 𝐫𝐞𝐧𝐚𝐦𝐞𝐝 𝐫𝐞𝐜𝐞𝐧𝐭𝐥𝐲.")
             return  # Exit the handler if the file is being ignored
 
     # Mark the file as currently being renamed
@@ -204,9 +204,9 @@ async def auto_rename_files(client, message):
         file_path = f"downloads/{new_file_name}"
         file = message
 
-        download_msg = await message.reply_text(text="Trying To Download.....")
+        download_msg = await message.reply_text(text="🚀 𝗣𝗖 𝗧𝗿𝘆𝗶𝗻𝗴 𝗧𝗼 𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱 🚀")
         try:
-            path = await client.download_media(message=file, file_name=file_path, progress=progress_for_pyrogram, progress_args=("Download Started....", download_msg, time.time()))
+            path = await client.download_media(message=file, file_name=file_path, progress=progress_for_pyrogram, progress_args=("🔥 𝘿𝙤𝙬𝙣𝙡𝙤𝙖𝙙 𝙎𝙩𝙖𝙧𝙩𝙚𝙙 🔥", download_msg, time.time()))
         except Exception as e:
             # Mark the file as ignored
             del renaming_operations[file_id]
@@ -220,7 +220,7 @@ async def auto_rename_files(client, message):
         except Exception as e:
             print(f"Error getting duration: {e}")
 
-        upload_msg = await download_msg.edit("Trying To Uploading.....")
+        upload_msg = await download_msg.edit("🚨 𝐓𝐫𝐲 𝐓𝐨 𝐔𝐩𝐥𝐨𝐚𝐝 🚨")
         ph_path = None
         c_caption = await madflixbotz.get_caption(message.chat.id)
         c_thumb = await madflixbotz.get_thumbnail(message.chat.id)
@@ -249,7 +249,7 @@ async def auto_rename_files(client, message):
                     thumb=ph_path,
                     caption=caption,
                     progress=progress_for_pyrogram,
-                    progress_args=("Upload Started.....", upload_msg, time.time())
+                    progress_args=("🚨 𝐏𝐂 𝐔𝐩𝐥𝐨𝐝𝐢𝐧𝐠... 🚨", upload_msg, time.time())
                 )
             elif type == "video":
                 await client.send_video(
@@ -259,7 +259,7 @@ async def auto_rename_files(client, message):
                     thumb=ph_path,
                     duration=duration,
                     progress=progress_for_pyrogram,
-                    progress_args=("Upload Started.....", upload_msg, time.time())
+                    progress_args=("🚨 𝐏𝐂 𝐔𝐩𝐥𝐨𝐝𝐢𝐧𝐠... 🚨", upload_msg, time.time())
                 )
             elif type == "audio":
                 await client.send_audio(
@@ -269,7 +269,7 @@ async def auto_rename_files(client, message):
                     thumb=ph_path,
                     duration=duration,
                     progress=progress_for_pyrogram,
-                    progress_args=("Upload Started.....", upload_msg, time.time())
+                    progress_args=("🚨 𝐏𝐂 𝐔𝐩𝐥𝐨𝐝𝐢𝐧𝐠... 🚨", upload_msg, time.time())
                 )
         except Exception as e:
             os.remove(file_path)
@@ -288,8 +288,3 @@ async def auto_rename_files(client, message):
 
 
 
-
-# Jishu Developer 
-# Don't Remove Credit 🥺
-# Telegram Channel @Madflix_Bots
-# Developer @JishuDeveloper
