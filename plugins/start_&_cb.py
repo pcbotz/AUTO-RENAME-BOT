@@ -10,13 +10,13 @@ async def start(client, message):
     user = message.from_user
     await madflixbotz.add_user(client, message)                
     button = InlineKeyboardMarkup([[
-      InlineKeyboardButton('📢 Updates', url='https://t.me/Madflix_Bots'),
-      InlineKeyboardButton('💬 Support', url='https://t.me/MadflixBots_Support')
+      InlineKeyboardButton('♨ 𝐔𝐏𝐃𝐀𝐓𝐄𝐒 ♨', url='https://t.me/pcott'),
+      InlineKeyboardButton('🚨 𝐀𝐃𝐌𝐈𝐍 🚨', url='https://t.me/PCADMINOFFICIALBOT')
     ],[
-      InlineKeyboardButton('⚙️ Help', callback_data='help'),
-      InlineKeyboardButton('💙 About', callback_data='about')
+      InlineKeyboardButton('🔥 𝐇𝐄𝐋𝐏 🔥', callback_data='help'),
+      InlineKeyboardButton('⚡ 𝐀𝐁𝐎𝐔𝐓 ⚡', callback_data='about')
     ],[
-        InlineKeyboardButton("🧑‍💻 Developer 🧑‍💻", url='https://t.me/CallAdminRobot')
+        InlineKeyboardButton("🧑‍💻 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫 🧑‍💻", url='https://t.me/PCADMINOFFICIALBOT')
     ]])
     if Config.START_PIC:
         await message.reply_photo(Config.START_PIC, caption=Txt.START_TXT.format(user.mention), reply_markup=button)       
@@ -33,22 +33,22 @@ async def cb_handler(client, query: CallbackQuery):
             text=Txt.START_TXT.format(query.from_user.mention),
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup([[
-                InlineKeyboardButton('📢 Updates', url='https://t.me/Madflix_Bots'),
-                InlineKeyboardButton('💬 Support', url='https://t.me/MadflixBots_Support')
-                ],[
-                InlineKeyboardButton('⚙️ Help', callback_data='help'),
-                InlineKeyboardButton('💙 About', callback_data='about')
-                ],[
-                InlineKeyboardButton("🧑‍💻 Developer 🧑‍💻", url='https://t.me/CallAdminRobot')
-                ]])
+      InlineKeyboardButton('♨ 𝐔𝐏𝐃𝐀𝐓𝐄𝐒 ♨', url='https://t.me/pcott'),
+      InlineKeyboardButton('🚨 𝐀𝐃𝐌𝐈𝐍 🚨', url='https://t.me/PCADMINOFFICIALBOT')
+    ],[
+      InlineKeyboardButton('🔥 𝐇𝐄𝐋𝐏 🔥', callback_data='help'),
+      InlineKeyboardButton('⚡ 𝐀𝐁𝐎𝐔𝐓 ⚡', callback_data='about')
+    ],[
+        InlineKeyboardButton("🧑‍💻 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫 🧑‍💻", url='https://t.me/PCADMINOFFICIALBOT')
+    ]])
         )
     elif data == "caption":
         await query.message.edit_text(
             text=Txt.CAPTION_TXT,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup([[
-                InlineKeyboardButton("✖️ Close", callback_data="close"),
-                InlineKeyboardButton("🔙 Back", callback_data="help")
+                InlineKeyboardButton("⚠ 𝐂𝐥𝐨𝐬𝐞 ⚠", callback_data="close"),
+                InlineKeyboardButton("🚦 𝐁𝐚𝐜𝐤 🚦", callback_data="help")
             ]])            
         )
     elif data == "help":
@@ -56,13 +56,13 @@ async def cb_handler(client, query: CallbackQuery):
             text=Txt.HELP_TXT.format(client.mention),
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup([[
-                InlineKeyboardButton("⚙️ Setup AutoRename Format ⚙️", callback_data='file_names')
+                InlineKeyboardButton("✨ 𝐒𝐞𝐭𝐮𝐩 𝐀𝐮𝐭𝐨𝐑𝐞𝐧𝐚𝐦𝐞 𝐅𝐨𝐫𝐦𝐚𝐭 ✨", callback_data='file_names')
                 ],[
-                InlineKeyboardButton('🖼️ Thumbnail', callback_data='thumbnail'),
-                InlineKeyboardButton('✏️ Caption', callback_data='caption')
+                InlineKeyboardButton('🎆 𝐓𝐡𝐮𝐦𝐛𝐧𝐚𝐢𝐥 🎆', callback_data='thumbnail'),
+                InlineKeyboardButton('🧩 𝐂𝐚𝐩𝐭𝐢𝐨𝐧 🧩', callback_data='caption')
                 ],[
-                InlineKeyboardButton('🏠 Home', callback_data='home'),
-                InlineKeyboardButton('💰 Donate', callback_data='donate')
+                InlineKeyboardButton('💢 𝐇𝐨𝐦𝐞 💢', callback_data='home'),
+                InlineKeyboardButton('💵 𝐃𝐨𝐧𝐚𝐭𝐞 💵', callback_data='donate')
                 ]])
         )
     elif data == "donate":
@@ -70,8 +70,8 @@ async def cb_handler(client, query: CallbackQuery):
             text=Txt.DONATE_TXT,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup([[
-                InlineKeyboardButton("✖️ Close", callback_data="close"),
-                InlineKeyboardButton("🔙 Back", callback_data="help")
+                InlineKeyboardButton("⚠ 𝐂𝐥𝐨𝐬𝐞 ⚠", callback_data="close"),
+                InlineKeyboardButton("🚦 𝐁𝐚𝐜𝐤 🚦", callback_data="help")
             ]])          
         )
     
@@ -81,8 +81,8 @@ async def cb_handler(client, query: CallbackQuery):
             text=Txt.FILE_NAME_TXT.format(format_template=format_template),
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup([[
-                InlineKeyboardButton("✖️ Close", callback_data="close"),
-                InlineKeyboardButton("🔙 Back", callback_data="help")
+                InlineKeyboardButton("⚠ 𝐂𝐥𝐨𝐬𝐞 ⚠", callback_data="close"),
+                InlineKeyboardButton("🚦 𝐁𝐚𝐜𝐤 🚦", callback_data="help")
             ]])
         )      
     
@@ -90,8 +90,8 @@ async def cb_handler(client, query: CallbackQuery):
         await query.message.edit_caption(
             caption=Txt.THUMBNAIL_TXT,
             reply_markup=InlineKeyboardMarkup([[
-                InlineKeyboardButton("✖️ Close", callback_data="close"),
-                InlineKeyboardButton("🔙 Back", callback_data="help"),
+                InlineKeyboardButton("⚠ 𝐂𝐥𝐨𝐬𝐞 ⚠", callback_data="close"),
+                InlineKeyboardButton("🚦 𝐁𝐚𝐜𝐤 🚦", callback_data="help"),
             ]]),
         )
 
@@ -100,8 +100,8 @@ async def cb_handler(client, query: CallbackQuery):
             text=Txt.ABOUT_TXT,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup([[
-                InlineKeyboardButton("✖️ Close", callback_data="close"),
-                InlineKeyboardButton("🔙 Back", callback_data="home")
+                InlineKeyboardButton("⚠ 𝐂𝐥𝐨𝐬𝐞 ⚠", callback_data="close"),
+                InlineKeyboardButton("🚦 𝐁𝐚𝐜𝐤 🚦", callback_data="home")
             ]])          
         )
     
@@ -119,8 +119,3 @@ async def cb_handler(client, query: CallbackQuery):
 
 
 
-
-# Jishu Developer 
-# Don't Remove Credit 🥺
-# Telegram Channel @Madflix_Bots
-# Developer @JishuDeveloper
