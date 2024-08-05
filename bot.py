@@ -50,7 +50,8 @@ Bot().run()
 
 """
 
-      from datetime import datetime
+     
+from datetime import datetime
 from pytz import timezone
 from pyrogram import Client, __version__
 from pyrogram.raw.all import layer
@@ -60,7 +61,6 @@ from route import web_server
 import pyrogram.utils
 import asyncio
 
-# Fix the minimum channel ID if needed
 pyrogram.utils.MIN_CHANNEL_ID = -1009147483647
 
 class Bot(Client):
@@ -83,20 +83,20 @@ class Bot(Client):
         self.username = me.username  
         self.uptime = Config.BOT_UPTIME     
 
-        # Set up the web server if enabled
         if Config.WEBHOOK:
-            app = await web_server()  # Correctly await the web_server function to get the web application instance
+            app = await web_server()
             runner = web.AppRunner(app)
             await runner.setup()
             site = web.TCPSite(runner, "0.0.0.0", 8080)
             await site.start()
+            print("Web server started on port 8080")
 
         print(f"{me.first_name} Is Started.....✨️")
         for id in Config.ADMIN:
             try:
                 await self.send_message(Config.LOG_CHANNEL, f"**{me.first_name} Is Started.....✨️**")
-            except:
-                pass
+            except Exception as e:
+                print(f"Error sending message to admin: {e}")
         
         if Config.LOG_CHANNEL:
             try:
@@ -107,10 +107,10 @@ class Bot(Client):
             except Exception as e:
                 print(f"Error sending message to log channel: {e}")
 
-# Main entry point
 async def main():
     bot = Bot()
     await bot.start()
 
 if __name__ == "__main__":
     asyncio.run(main())
+
