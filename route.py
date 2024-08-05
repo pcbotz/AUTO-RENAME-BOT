@@ -1,4 +1,4 @@
-from aiohttp import web
+"""from aiohttp import web
 
 routes = web.RouteTableDef()
 
@@ -10,7 +10,7 @@ async def root_route_handler(request):
 async def web_server():
     web_app = web.Application(client_max_size=30000000)
     web_app.add_routes(routes)
-    return web_app
+    return web_app"""
 
 
 
@@ -18,3 +18,15 @@ async def web_server():
 # Don't Remove Credit 🥺
 # Telegram Channel @Madflix_Bots
 # Developer @JishuDeveloper
+from aiohttp import web
+
+routes = web.RouteTableDef()
+
+@routes.get("/", allow_head=True)
+async def root_route_handler(request):
+    return web.json_response("Madflix_Bots")
+
+async def web_server():
+    web_app = web.Application(client_max_size=30000000)
+    web_app.add_routes(routes)
+    return web_app
