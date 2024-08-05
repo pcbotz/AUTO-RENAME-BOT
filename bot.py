@@ -49,7 +49,8 @@ class Bot(Client):
 Bot().run()
 
 """
-from datetime import datetime
+
+      from datetime import datetime
 from pytz import timezone
 from pyrogram import Client, __version__
 from pyrogram.raw.all import layer
@@ -84,8 +85,7 @@ class Bot(Client):
 
         # Set up the web server if enabled
         if Config.WEBHOOK:
-            app = web.Application()
-            app.add_routes(web_server)  # Assume `web_server` is a list of routes
+            app = await web_server()  # Correctly await the web_server function to get the web application instance
             runner = web.AppRunner(app)
             await runner.setup()
             site = web.TCPSite(runner, "0.0.0.0", 8080)
@@ -114,4 +114,3 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-
